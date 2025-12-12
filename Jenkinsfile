@@ -1,16 +1,25 @@
 pipeline {
     agent any
-
-    environment {
-        MY_CRED = credentials('MY_SECRET')
-    }
-
+    
     stages {
-        stage('Load_Credentials') {
+        stage('Test'){
+            Step{
+                echo "Helllo world"
+            }
+           }
+        state('Build'){
+            input {
+                message = "Should we continue?"
+            }
+        }
+        stage('deploy-on-test'){
             steps {
-                echo "Hello World"
-                echo "my username is : ${MY_CRED_USR}"
-                echo "my password is : ${MY_CRED_PSW}"
+                echo 'Hello deploy-on-test'
+            }
+        }
+        stage('deploy-on-prod'){
+            steps {
+                echo 'Hello deploy-on prod'
             }
         }
     }
