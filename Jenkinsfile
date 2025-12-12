@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        name = "love U"
         MY_CRED = credentals('MY_SECRETS')
     }
    
