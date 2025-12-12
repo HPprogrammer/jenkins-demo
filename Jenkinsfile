@@ -2,22 +2,16 @@ pipeline {
     agent any
     environment {
         name = "love U"
+        MY_CRED = credentals('MY_SECRETS')
     }
-    parameters{
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-        choice(name: 'CHOICE', choices: ['Apply', 'Distroy'], description: 'Pick something')
-    }
+   
     stages {
-        stage('Step1') {
+        stage('Load_Credentials') {
             steps {
                 echo 'Hello World'
-            }
-        }
-        stage('Step2') {
-            steps {
-                echo "hello i realy $name"
-                echo "my built with paremeter is $PERSON"
-                echo "My choice peremeter is $CHOICE"
+                echo 'my username is : $MY_CRED_USR'
+                echo 'my password is : $MY_CRED_PSW'
+                
             }
         }
     }
