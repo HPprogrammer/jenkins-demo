@@ -4,7 +4,7 @@ pipeline {
         name = "love U"
     }
     parameters{
-        string(name: 'PERSON', defaultvalue: 'Mr. Jenkins', description: 'who should i say Hello 2 ?')
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     }
     stages {
         stage('Step1') {
