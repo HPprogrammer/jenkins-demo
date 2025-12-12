@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        MY_CRED = credentials('MY_SECRETS')
+        MY_CRED = credentials('MY_SECRET')
     }
 
     stages {
