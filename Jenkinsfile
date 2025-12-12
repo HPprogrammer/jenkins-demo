@@ -2,30 +2,24 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Test') {
+        stage('build step') {
             steps {
-                echo "Hello world"
+                echo "Build stage is running"
             }
-        }
 
-        stage('Build') {
-            steps {
-                script {
-                    input message: "Should we continue?"
+            post {
+                always {
+                    echo "You can always see me"
                 }
-            }
-        }
-
-        stage('deploy-on-test') {
-            steps {
-                echo 'Hello deploy-on-test'
-            }
-        }
-
-        stage('deploy-on-prod') {
-            steps {
-                echo 'Hello deploy-on-prod'
+                success {
+                    echo "I am running because the job ran successfully"
+                }
+                unstable {
+                    echo "Gear up! The build is unstable."
+                }
+                failure {
+                    echo "OMG! The build failed"
+                }
             }
         }
     }
