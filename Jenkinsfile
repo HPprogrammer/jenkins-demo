@@ -1,25 +1,31 @@
 pipeline {
     agent any
-    
+
     stages {
-        stage('Test'){
-            Step{
-                echo "Helllo world"
-            }
-           }
-        state('Build'){
-            input {
-                message = "Should we continue?"
+
+        stage('Test') {
+            steps {
+                echo "Hello world"
             }
         }
-        stage('deploy-on-test'){
+
+        stage('Build') {
+            steps {
+                script {
+                    input message: "Should we continue?"
+                }
+            }
+        }
+
+        stage('deploy-on-test') {
             steps {
                 echo 'Hello deploy-on-test'
             }
         }
-        stage('deploy-on-prod'){
+
+        stage('deploy-on-prod') {
             steps {
-                echo 'Hello deploy-on prod'
+                echo 'Hello deploy-on-prod'
             }
         }
     }
